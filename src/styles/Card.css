@@ -1,0 +1,24 @@
+.card {
+  padding: 1em;
+  align-items: space-around;
+  justify-content: center;
+  width: 250px;
+  border: 1px solid #222;
+}
+
+.iconBox {
+  justify-content: center;
+  text-align: center;
+}
+
+.icon {
+  font-size: 3em;
+}
+
+/* Cadr List */
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 10px;
+}
