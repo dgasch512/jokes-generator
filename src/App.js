@@ -3,6 +3,7 @@ import './App.css';
 import CardList from "./components/CardList";
 import HeadBar from "./components/HeadBar";
 import { jokes } from "./jokes";
+import { Layout } from './styles/Layout';
 
 class App extends React.Component {
   constructor() {
@@ -10,15 +11,16 @@ class App extends React.Component {
     this.state = {
       jokes: jokes
     }
-
   }
 
   render() {
     return (
-      <div>
-        <HeadBar />
-        <CardList jokes={this.state.jokes}/>
-      </div>
+      
+        <Layout>
+          <HeadBar />
+          <CardList jokes={this.state.jokes}/>
+        </Layout>
+
 
     );
   }

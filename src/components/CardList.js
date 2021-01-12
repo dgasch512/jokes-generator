@@ -1,24 +1,25 @@
 import React from "react";
 import Card from "./Card";
-import "../styles/Card.css";
+import { CardBox } from "../styles/Card";
 
 
-const CardList = ({ jokes }) => {
+const CardList = ({ jokes, isFlipped }) => {
   return (
-    <div className="cardGrid">
-      {
-        jokes.map((joke, i) => {
-          return (
-            <Card 
-              key={i}
-              id={jokes[i].id}
-              setup={jokes[i].setup}
-              punchline={jokes[i].punchline}
-            />
-          );
-        })
-      }
-    </div>
+      <CardBox>
+        {
+          jokes.map((joke, i) => {
+            return (
+                <Card 
+                  key={jokes[i].id}
+                  isFlipped={isFlipped}
+                  setup={jokes[i].setup}
+                  punchline={jokes[i].punchline}
+                />
+            );
+          })
+        }
+      </CardBox>
+
   )
 }
 
