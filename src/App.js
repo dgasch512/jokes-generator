@@ -1,29 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect} from 'react';
 import './App.css';
 import CardList from "./components/CardList";
 import HeadBar from "./components/HeadBar";
-import { jokes } from "./jokes";
-import { Layout } from './styles/Layout';
 
-class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      jokes: jokes
-    }
-  }
+function App() {
+  const [ jokes, setJokes] = useState([]);
 
-  render() {
+  useEffect(() => {
+    fetch('https://official-joke-api.appspot.com/jokes/general/ten')
+      .then(response => response.json())
+      .then(yokes => {setJokes( yokes )});
+  }, []) 
+
     return (
       
-        <Layout>
+        <div>
           <HeadBar />
-          <CardList jokes={this.state.jokes}/>
-        </Layout>
+          <CardList jokes={jokes}/>
+        </div>
 
 
     );
-  }
 }
 
 export default App;

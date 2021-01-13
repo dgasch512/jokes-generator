@@ -1,31 +1,32 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Icon, CardFront, CardBack } from '../styles/Card';
 import ReactCardFlip from 'react-card-flip';
 
-class Card extends Component {
-  constructor() {
-    super();
-    this.state = {
-      isFlipped: false
-    }
-    this.handleClick = this.handleClick.bind(this);
-  }
+function Card( { setup, punchline}) {
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     isFlipped: false
+  //   }
+  //   this.handleClick = this.handleClick.bind(this);
+  // }
 
-  handleClick(e) {
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  const handleClick = (e) => {
     e.preventDefault();
-    this.setState(prevState => ({ isFlipped: !prevState.isFlipped }));
-    // console.log(isFlipped, id, headline );
+    setIsFlipped(state => !state);
+    console.log(isFlipped);
   }
 
-  render() {
-    let { isFlipped } = this.state;
-    const { setup, punchline } = this.props;
+    // let { isFlipped } = this.state;
+    // const { setup, punchline } = this.props;
 
-    
+
     return (
       <ReactCardFlip isFlipped={isFlipped} flipDirection='horizontal'>
         {!isFlipped && (
-          <CardFront onClick={this.handleClick}>
+          <CardFront onClick={handleClick}>
             <div>
               <Icon>
               <i className="icon fas fa-brain"></i> 
@@ -35,7 +36,7 @@ class Card extends Component {
           </CardFront>
         )}
         {isFlipped && (
-          <CardBack onClick={this.handleClick}>
+          <CardBack onClick={handleClick}>
             <div>
               <Icon>
               <i className="icon fas fa-brain"></i> 
@@ -48,9 +49,6 @@ class Card extends Component {
 
       </ReactCardFlip>    
     )
-
-
-  }
 
 }
 
